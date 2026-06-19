@@ -94,4 +94,4 @@ O dataset é baixado automaticamente na primeira execução.
 
 ## Autor
 
-**Ruan Rodrigues S.** — [GitHub](https://github.com/RuanRodriguesS)
+**Ruan Rodrigues** — [GitHub](https://github.com/RuanRodriguesS)
