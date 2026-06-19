@@ -50,12 +50,19 @@ Como engenharia de feature, foi calculada a distância em km entre o endereço d
 
 ## Modelo
 
-O classificador usado foi o **XGBoost**, otimizado com **GridSearchCV**. O pipeline inclui:
+O classificador usado foi o **XGBoost**, otimizado com **GridSearchCV** (3 folds, 8 combinações testadas). O modelo foi configurado com `enable_categorical=True`, aceitando a feature `category` diretamente sem necessidade de encoding manual.
 
-- One-Hot Encoding na coluna `category`
-- Balanceamento com **SMOTE** para compensar o desbalanceamento das classes
+Dado o forte desbalanceamento das classes, o threshold de classificação foi ajustado para **0.33** (ao invés do padrão 0.5) para maximizar o recall sem sacrificar demais a precisão.
 
-As principais métricas de avaliação foram **F1-Score**, **Precision**, **Recall** e **ROC-AUC**, mais adequadas para datasets desbalanceados do que a acurácia simples.
+**Melhores parâmetros encontrados:** `learning_rate=0.1`, `max_depth=5`, `n_estimators=200`
+
+**Resultados no conjunto de teste:**
+
+| Métrica | Valor |
+|---|---|
+| AUC-ROC | 0.9974 |
+| F1-Score | 0.7741 |
+| Recall | 0.7535 |
 
 ---
 
@@ -63,8 +70,7 @@ As principais métricas de avaliação foram **F1-Score**, **Precision**, **Reca
 
 - `pandas` / `numpy` — manipulação de dados
 - `matplotlib` / `seaborn` — visualizações
-- `scikit-learn` — pipelines e métricas
-- `imbalanced-learn` — SMOTE
+- `scikit-learn` — métricas e split de treino/teste
 - `xgboost` — classificador
 - `kagglehub` — download do dataset
 
@@ -73,7 +79,7 @@ As principais métricas de avaliação foram **F1-Score**, **Precision**, **Reca
 ## Como executar
 
 ```bash
-pip install pandas numpy matplotlib seaborn scikit-learn imbalanced-learn xgboost kagglehub
+pip install pandas numpy matplotlib seaborn scikit-learn xgboost kagglehub
 ```
 
 Configure suas credenciais do Kaggle em `~/.kaggle/kaggle.json`, depois abra o notebook:
