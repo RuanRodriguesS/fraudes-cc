@@ -50,7 +50,7 @@ Como engenharia de feature, foi calculada a distância em km entre o endereço d
 
 ## Modelo
 
-O classificador usado foi o **XGBoost**, otimizado com **GridSearchCV** (3 folds, 8 combinações testadas). O modelo foi configurado com `enable_categorical=True`, aceitando a feature `category` diretamente sem necessidade de encoding manual.
+O classificador usado foi o **XGBoost**, otimizado com **GridSearchCV** (3 folds, 8 combinações testadas).
 
 Dado o forte desbalanceamento das classes, o threshold de classificação foi ajustado para **0.33** (ao invés do padrão 0.5) para maximizar o recall sem sacrificar demais a precisão.
 
