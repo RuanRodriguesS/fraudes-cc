@@ -87,11 +87,3 @@ Configure suas credenciais do Kaggle em `~/.kaggle/kaggle.json`, depois abra o n
 ```bash
 jupyter notebook fraudes.ipynb
 ```
-
-O dataset é baixado automaticamente na primeira execução.
-
----
-
-## Autor
-
-**Ruan Rodrigues** — [GitHub](https://github.com/RuanRodriguesS)
